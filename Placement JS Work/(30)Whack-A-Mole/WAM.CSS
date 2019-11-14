@@ -1,0 +1,56 @@
+HTML{
+    Box-Sizing: Border-Box;
+    Font-Size: 10px;
+    Background: #ffc600;
+}
+
+/*, *:Before, *:After {
+    Box-Sizing: Inherit;
+}
+
+body{
+    Padding: 0;
+    Margin: 0;
+}
+
+H1{
+    Text-Align: Center;
+    Font-Size: 10rem;
+    Line-Height: 1;
+    Margin-Bottom: 0;
+}
+
+.Score{
+    Background: rgba(255,255,255,0,2);
+    Padding: 0 3rem;
+    Line-height: 1;
+    Border-Radius: 1rem;
+}
+
+.Game{
+    Width: 600px;
+    Height: 400px;
+    Display: Flex;
+    Flex-Wrap: Wrap;
+    Margin: 0 Auto;
+}
+
+.Hole{
+    FLex: 1 0 33.33%;
+    OverFLow: Hidden;
+    Position: relative;
+}
+
+.Mole {
+    Background:url('') bottom center no-repeat;
+    Background-Size:60%;
+    Position: Absolute;
+    top: 100%;
+    width: 100%;
+    height: 100%;
+    transition:all 0.4s;
+}
+
+.Hole.Up .mole {
+    top:0;
+}

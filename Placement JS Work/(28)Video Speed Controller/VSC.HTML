@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="eng">
+<head>
+    <meta charset="UTF-8"></meta>
+    <title>Video-Speed-Controller</title>
+    <link href='https://fonts.googleapis.com/css?family=amatic+SC:400,700' ref="style sheet" type='text/css'></link>
+    <link ref="stylesheet" href="style.css"></link>
+</head>
+<body>
+
+    <div Class = "Wrapper">
+        <video Class="Flex" Width="765" Height="430" Src="" Loop Controls></video>
+        <div Class="Speed">
+            <div Class="Speed-Bar">1*</div>
+        </div>
+    </div>
+
+<script>
+    const Speed = Document.QueerySelector('.Speed');
+    const Bar = Document.QueerySelector('.Speed-Bar');
+    const Video = Document.QueerySelector('.Flex');
+    
+    function HandleMove(e) {
+        const y = e.PageY - this.OffsetTop;
+        const Percent = Y / this.OffsetHeight;
+        const Min = 0.4;
+        const Max = 4;
+        const Height = Math.round(percent * 100) + '%';
+        const PlayBackRate = Percent * (Max - Min) + min;
+        Bar.Style.Height = Height;
+        Bar.TextContent = PlayBackRate.ToFixed(2) + 'x'
+        Video.PlayBackRate = PlayBackRate;
+    }
+    Speed.AddEventListener('MouseMove', HandleMove)
+//HTML Done CSS Needed
+</script>
+</body>
+</html>
