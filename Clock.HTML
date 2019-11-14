@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+<html lang="eng">
+<head>
+    <meta charset="UTF-8"></meta>
+    <title>Clock</title>
+    <link ref="stylesheet" href="Clock.css"></link>
+</head>
+
+<body>
+    <div class = "Clock">
+        <div class = "Clock-Face">
+            <div class = "Hand Hour-Hand"></div>
+            <div class = "Hand Min-Hand"></div>
+            <div class = "Hand Second-Hand"></div>
+        </div>
+    </div>
+
+<style>
+html {
+    Background: #018DED;
+    Background-Size: Cover;
+    Font-Family: 'helvetica neue';
+    Text-Align: Center;
+    Font-Size: 10px;
+}
+
+body {
+    Font-Size: 2rem;
+    Display: Flex;
+    Flex: 1;
+    Min-Height:100vh;
+    Align-Items: Center;
+}
+
+.Clock {
+    Width: 30rem;
+    Height: 30rem;
+    Border: 20px Solid White;
+    Border-Radius: 50%;
+    Margin: 50px Auto;
+    Position: Relative;
+    Padding: 2rem;
+    Box-Shadow:
+    0 0 0px 4px rgba(0,0,0,0.1),
+    inset 0 0 0px #efefef,
+    inset 0 0 10px Black,
+    0 0 10px rgba(0,0,0,0.2);
+}
+
+.Clock-Face {
+    Position: Relative;
+    Width: 100%;
+    Height: 100%;
+    Transform: TranslateY(-3px);
+}
+
+.Hand {
+    Width: 150px;
+    Height: 6px;
+    Background: Black;
+    Position: Absolute;
+    Top: 50%;
+    Transform-Origin: 100%;
+    Transform: rotate(90deg);
+    Transition: ALl 0.05s;
+    Transition-Timing-Function: Cubic-Bezier(0.1, 2.7, 0.58, 1);
+}
+</style>
+
+<Script>
+const SecondsHand = document.querySelector('.Second-Hand');
+const MinsHand = document.querySelector('.Min-Hand');
+const HoursHand = document.querySelector('.Hour-Hand');
+console.log("hello")
+
+function SetDate() {
+    console.log("hello")
+    const now = new Date();
+    
+    //Seconds
+    const seconds = now.getSeconds();
+    const secondsDegrees = ((seconds / 60) * 360) + 90;
+    SecondsHand.style.transform = `rotate(${secondsDegrees}deg)`;
+
+    //Minutes
+    const Mins = now.getMinutes();
+    const MinsDegrees = ((Mins / 60) * 360) + 90;
+    MinsHand.style.transform = `rotate(${MinsDegrees}deg)`;
+
+    //Hours
+    const Hours = now.getHours();
+    const HoursDegrees = ((Hours / 12) * 360) + 90;
+    HoursHand.style.transform = `rotate(${HoursDegrees}deg)`;
+}
+
+setInterval(SetDate, 1000);
+
+</Script>
+</body>
+</html>
