@@ -1,93 +1,82 @@
-<!DOCTYPE HTML>
-<html lang="eng">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8"></meta>
-    <title>Whack-A-Mole</title>
-    <link ref="stylesheet" href="WAM.CSS"></link>
+  <meta charset="UTF-8">
+  <title>Whack A Mole!</title>
+  <link href='https://fonts.googleapis.com/css?family=Amatic+SC:400,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="wam.css">
 </head>
 <body>
 
-    <H1>Whack-A-Mole! <span Class="Score">0</span></H1>
-    <button OnClick="StartGame()">Start!</button>
-    <div class="Game">
-        <div class="Hole">
-            <div class="Mole"></div>
-        </div>
-        <div class="Hole">
-            <div class="Mole"></div>
-        </div>
-        <div class="Hole">
-            <div class="Mole"></div>
-        </div>
-        <div class="Hole">
-            <div class="Mole"></div>
-        </div>
-        <div class="Hole">
-            <div class="Mole"></div>
-        </div>
-        <div class="Hole">
-            <div class="Mole"></div>
-        </div>
-        <div class="Hole">
-            <div class="Mole"></div>
-        </div>
-        <div class="Hole">
-            <div class="Mole"></div>
-        </div>
-        <div class="Hole">
-            <div class="Mole"></div>
-        </div>
+  <h1>Whack-a-mole! <span class="score">0</span></h1>
+  <div class="buttonWrapper">
+        <button class="startButton" onClick="startGame()">Start!</button>
+  </div>
+
+  <div class="game">
+    <div class="hole hole1">
+      <div class="mole"></div>
     </div>
+    <div class="hole hole2">
+      <div class="mole"></div>
+    </div>
+    <div class="hole hole3">
+      <div class="mole"></div>
+    </div>
+    <div class="hole hole4">
+      <div class="mole"></div>
+    </div>
+    <div class="hole hole5">
+      <div class="mole"></div>
+    </div>
+    <div class="hole hole6">
+      <div class="mole"></div>
+    </div>
+  </div>
 
 <script>
-    const Holes = Document.QuerySelectorAll('.Hole');
-    const ScoreBoard = Document.QuerySelector('.Score');
-    const Moles = Document.QuerySelectorAll('.Mole');
-    let LastHole;
-    let TimeUp = false;
-    let Score = 0;
-    
-    function RandTime(min, max) {
-        return Math.Round(Math.Rand() * (min - max) + min);
+  const holes = document.querySelectorAll('.hole');
+  const scoreBoard = document.querySelector('.score');
+  const moles = document.querySelectorAll('.mole');
+  let lastHole;
+  let timeUp = false;
+  let score = 0;
+  function randomTime(min, max) {
+    return Math.round(Math.random() * (max - min) + min);
+  }
+  function randomHole(holes) {
+    const idx = Math.floor(Math.random() * holes.length);
+    const hole = holes[idx];
+    if (hole === lastHole) {
+      console.log('Ah nah thats the same one bud');
+      return randomHole(holes);
     }
-
-    function Randoole(Holes){
-        const idx = Math.Floor(Math.Rand() * Holes.Length);
-        const Hole = Holes[idx];
-        if (Hole === LastHole) {
-            return RandHole(Holes);
-        }
-        LastHole = Hole;
-        return Hole;
-    }
-
-    function Peep() {
-        const Time = RandTime(200, 1000)
-        const Hole = RandHole(Holes);
-        Hole.ClassList.Add('up');
-        SetTimeout(() => {
-            Hole.ClassList.Remove('up');
-            if(!TimeUp) Peep();
-        }, Time);
-    }
-
-    function StartGame(){
-        ScoreBoard .TextContent = 0;
-        TimeUp = false;
-        Score: 0;
-        Peep()
-        SetTimeout(() => TimeUp = true, 10000)
-    }
-
-    function Whack(e) {
-        if(!e.IsTrusted) return;
-        Score++;
-        this.ClassList.Remove('up');
-        ScoreBoard.TextContent = Score;
-    }
-
-    Moles.ForeEach(Mole => Mole.AddEventListener('click', Whack));
-
+    lastHole = hole;
+    return hole;
+  }
+  function peep() {
+    const time = randomTime(200, 1000);
+    const hole = randomHole(holes);
+    hole.classList.add('up');
+    setTimeout(() => {
+      hole.classList.remove('up');
+      if (!timeUp) peep();
+    }, time);
+  }
+  function startGame() {
+    scoreBoard.textContent = 0;
+    timeUp = false;
+    score = 0;
+    peep();
+    setTimeout(() => timeUp = true, 10000)
+  }
+  function bonk(e) {
+    if(!e.isTrusted) return; // cheater!
+    score++;
+    this.parentNode.classList.remove('up');
+    scoreBoard.textContent = score;
+  }
+  moles.forEach(mole => mole.addEventListener('click', bonk));
 </script>
 </body>
 </html>
