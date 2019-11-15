@@ -1,29 +1,32 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="eng">
 <head>
     <meta charset="UTF-8"></meta>
     <title>Timer</title>
-    <link ref="stylesheet" href="Timer.css"></link>
+    <link rel="stylesheet" href="timer.css">
 </head>
 <body>
-    <div CLass="Timer">
-        <div Class="Timer__Controls">
-            <button Data-Time="20" Class="Timer__Button">20 Secs</button>
-            <button Data-Time="300" Class="Timer__Button">Work 5</button>
-            <button Data-Time="900" Class="Timer__Button">Quick 15</button>
-            <button Data-Time="1200" Class="Timer__Button">Snack 20</button>
-            <button Data-Time="3600" Class="Timer__Button">Lunch Break</button>
-            <form Name="CustomForm" Id="Custom">
-                <input Type="Text" Name="Minutes" Placeholder="EnterMinutes">
+        <div class="test"></div>
+    <div class="timer">
+        <div class="timer__controls">
+            
+            <button data-time="20" class="timer__button">20 Secs</button>
+            <button data-time="300" class="timer__button">Work 5</button>
+            <button data-time="900" class="timer__button">Quick 15</button>
+            <button data-time="1200" class="timer__button">Snack 20</button>
+            <button data-time="3600" class="timer__button">Lunch Break</button>
+            <form name="customForm" id="custom">
+                <input type="text" name="minutes" placeHolder="Enter minutes">
             </form>
         </div>
-        <div Class="Display">
-            <H1 Class="Display__Time-Left"></H1>
-            <P Class="display__End-Time"></P>
+        <div class="display">
+            <H1 class="display__time-left"></H1>
+            <P class="display__end-time"></P>
         </div>
     </div>
     
-    <Script src="Timer.js"></Script>
+    <Script src="timer.js"></Script>
+   
 
 </body>
 </html>
