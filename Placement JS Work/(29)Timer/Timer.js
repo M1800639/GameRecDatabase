@@ -1,48 +1,51 @@
-let Countdown;
-const TimerDisplay = Document.QuerySeletor('.Display__Time-Left');
-const Endtime = Document.QuerySeletor('.Display __End-Time');
-const Buttons = Document.QuerySeletorAll('[Data-Time]');
+let countdown;
+const timerDisplay = document.querySelector('.display__time-left');
+const endTime = document.querySelector('.display__end-time');
+const buttons = document.querySelectorAll('[data-time]');
 
-function Timer(Seconds) {
-    clearInterval(Countdown);
-    const Now = Date.Now();
-    const then = Now + Seconds * 1000;
-    DisplayTimeLeft(Seconds);
-    DisplayEndTime(then);
+function timer(seconds) {
+  clearInterval(countdown);
+  const now = Date.now();
+  const then = now + seconds * 1000;
+  displayTimeLeft(seconds);
+  displayEndTime(then);
 
-    Countdown = SetInterval(() => {
-        const SecondsLeft = Math.Round((then - Date.Now()) / 1000);
-        if(SecondsLeft < 0){
-            clearInterval(Countdown);
-            return;
-        }
-        DisplayTimeLeft(SecondsLeft);
-    }, 1000);
-}
-function DisplayTimeLeft(Seconds) {
-    const Minutes = Math.floor(Seconds / 60);
-    const RemainderSeconds = Seconds % 60;
-    const Display = `${Minutes}:${RemainderSeconds < 10 ? '0' : ''}${RemainderSeconds}`;
-    Document.Title = Display;
-    TimerDisplay.TextContent = Display;
+  countdown = setInterval(() => {
+    const secondsLeft = Math.round((then - Date.now()) / 1000);
+    if(secondsLeft < 0) {
+      clearInterval(countdown);
+      return;
+    }
+    displayTimeLeft(secondsLeft);
+  }, 1000);
 }
 
-function DisplayEndTime(TimeStanp) {
-    const end = new Date(TimeStamp);
-    const Hour = End.GetHours();
-    const Minutes = End.GetMinutes();
-    Endtime.TextContent = `Return for ${Hour}:${Minutes < 10 ? '0' : ''}${Minutes}`;
+function displayTimeLeft(seconds) {
+  const minutes = Math.floor(seconds / 60);
+  const remainderSeconds = seconds % 60;
+  const display = `${minutes}:${remainderSeconds < 10 ? '0' : '' }${remainderSeconds}`;
+  document.title = display;
+  timerDisplay.textContent = display;
 }
 
-function StartTimer() {
-    const Seconds = ParseInt(this.DataSet.Time)
-    Timer(Seconds);
-} 
+function displayEndTime(timestamp) {
+  const end = new Date(timestamp);
+  const hour = end.getHours();
+  const adjustedHour = hour > 12 ? hour - 12 : hour;
+  const minutes = end.getMinutes();
+  endTime.textContent = `Be Back At ${adjustedHour}:${minutes < 10 ? '0' : ''}${minutes}`;
+}
 
-Buttons.ForEach(Button => Button.AddEventListener('Click', StartTimer));
-Documant.Customform.AddEventListener('Submit' , function(e){
-e.PreventDefault();
-const mins = this.Minutes.Value;
-Timer(Mins * 60);
-this.Reset();
+function startTimer() {
+  const seconds = parseInt(this.dataset.time);
+  timer(seconds);
+}
+
+buttons.forEach(button => button.addEventListener('click', startTimer));
+document.customForm.addEventListener('submit', function(e) {
+  e.preventDefault();
+  const mins = this.minutes.value;
+  console.log(mins);
+  timer(mins * 60);
+  this.reset();
 });
