@@ -1,0 +1,15 @@
+{
+    "name": "expresstest",
+    "private": true,
+    "description": "",
+    "version": "0.1.0",
+    "author": "",
+    "dependencies": {
+      "express": "^4.17.1"
+    },
+    "devDependencies": {},
+    "license": "MIT",
+    "scripts": {
+      "start": "node express.js"
+    }
+  }

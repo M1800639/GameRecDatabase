@@ -1,0 +1,52 @@
+  html {
+    box-sizing: border-box;
+    font-size: 10px;
+    background: #2603a1fd;
+  }
+
+  header {
+    box-sizing: border-box;
+    background: #9c3505fd;
+}
+
+  body {
+    padding: 0;
+    margin: 0;
+    font-family: 'Amatic SC', cursive;
+    background: #c74e16fd;
+    height: 500px;
+  }
+  
+  h1 {
+    text-align: center;
+    font-size: 10rem;
+    line-height: 1;
+    margin-bottom: 0;
+    color: white;
+  }
+  
+  h3 {
+    font-size: 4rem;
+    line-height: 1;
+    margin-bottom: 0;
+    color: white;
+  }
+
+  .navigation{
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .data {
+    font-size: 4rem;
+    line-height: 1;
+    margin-bottom: 0;
+    color: white;
+    text-align: center;
+  }
+  
+  .footer {
+    background-color: red;
+    color: white;
+    text-align: center;
+  }
